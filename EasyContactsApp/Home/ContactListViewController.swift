@@ -7,100 +7,48 @@
 
 import UIKit
 import Contacts
-import Algorithms
 
 class ContactListViewController: UIViewController {
     
     @IBOutlet weak var contactTableView : UITableView!
     
-    let contactStore = CNContactStore()
-    var contactList : [CNContact] = []
-    var headers : [String] = []
-    let keysToFetch : [CNKeyDescriptor] = [
-        CNContactFormatter.descriptorForRequiredKeys(for: .fullName) as CNKeyDescriptor,
-        CNContactEmailAddressesKey as CNKeyDescriptor,
-        CNContactOrganizationNameKey as CNKeyDescriptor
-    ]
+    let viewModel = ContactViewModel.shared
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCell()
-
+        viewModel.delegate = self
+        viewModel.registerTableCell(contactTableView)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.fetchContacts()
+            guard let strongSelf = self else { return }
+            strongSelf.viewModel.fetchContacts()
         }
-    }
-    
-    func registerCell(){
-        contactTableView.register(UINib(nibName: Constants.basicCellIdentifier, bundle: nil), forCellReuseIdentifier: Constants.basicCellIdentifier)
-    }
-    
-    
-    func fetchContacts(){
-        contactList.removeAll()
-        do {
-            let request = CNContactFetchRequest(keysToFetch: keysToFetch)
-            try contactStore.enumerateContacts(with: request, usingBlock: { contact, stop in
-                self.contactList.append(contact)
-            })
-            self.createHeaders()
-            
-        } catch let error {
-            print(error)
-        }
-        
-    }
-    
-    func createHeaders(){
-        headers.removeAll()
-        for contact in contactList{
-            if contact.givenName.isEmpty{
-                let header = String(contact.organizationName.prefix(1))
-                headers.append(header)
-            } else {
-                let header = String(contact.givenName.prefix(1))
-                headers.append(header)
-            }
-        }
-        headers = headers.uniqued().sorted().filter({!$0.isEmpty && (Int($0) == nil)})
-        self.contactTableView.reloadData()
     }
 }
 
 extension ContactListViewController : UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return headers.count
+        return viewModel.headers.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let header = headers[section]
+        let header = viewModel.headers[section]
         return header.uppercased()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let header = headers[section]
-        return giveNameList(section: header, list: contactList).count
+        let header = viewModel.headers[section]
+        return giveNameList(section: header, list: viewModel.contactList).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let header = headers[indexPath.section]
-        let contact = giveNameList(section: header, list: contactList)[indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.basicCellIdentifier) as? BasicContactTableViewCell else {
-            return getDummyCell()
-        }
-        cell.contact = contact
-        cell.delegate = self
-        return cell
-        
+        let header = viewModel.headers[indexPath.section]
+        let contact = giveNameList(section: header, list: viewModel.contactList)[indexPath.row]
+        return createCell(tableView, header: header, contact: contact)
     }
-    
     
 }
 
@@ -123,6 +71,12 @@ extension ContactListViewController : BasicContactTableViewCellDelegate{
     
 }
 
+extension ContactListViewController : ContactViewModelDelegate{
+    func reloadTable() {
+        self.contactTableView.reloadData()
+    }
+}
+
 extension ContactListViewController{
     func giveNameList(section : String, list: [CNContact]) -> [CNContact] {
         return list.filter({ String($0.givenName.prefix(1)) == section })
@@ -135,5 +89,14 @@ extension ContactListViewController{
     func generateFeedback(){
         let feedback = UIImpactFeedbackGenerator()
         feedback.impactOccurred()
+    }
+    
+    func createCell(_ tableView: UITableView, header: String, contact: CNContact) -> UITableViewCell{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.basicCellIdentifier) as? BasicContactTableViewCell else {
+            return getDummyCell()
+        }
+        cell.contact = contact
+        cell.delegate = self
+        return cell
     }
 }
