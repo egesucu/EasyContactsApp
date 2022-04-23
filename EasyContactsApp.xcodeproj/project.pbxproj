@@ -9,21 +9,28 @@
 /* Begin PBXBuildFile section */
 		9D0613C128142A3600C16554 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0613C028142A3600C16554 /* AppDelegate.swift */; };
 		9D0613C328142A3600C16554 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0613C228142A3600C16554 /* SceneDelegate.swift */; };
-		9D0613C528142A3600C16554 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0613C428142A3600C16554 /* ViewController.swift */; };
-		9D0613C828142A3600C16554 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D0613C628142A3600C16554 /* Main.storyboard */; };
 		9D0613CA28142A3B00C16554 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D0613C928142A3B00C16554 /* Assets.xcassets */; };
 		9D0613CD28142A3B00C16554 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D0613CB28142A3B00C16554 /* LaunchScreen.storyboard */; };
+		9D0613D728142AB500C16554 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0613D528142AB500C16554 /* ContactListViewController.swift */; };
+		9D0613DA28142B0700C16554 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D0613D928142B0700C16554 /* Home.storyboard */; };
+		9D0F1C3B281434C700648A80 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 9D0F1C3A281434C700648A80 /* Algorithms */; };
+		9D0F1C3F281437EE00648A80 /* BasicContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F1C3D281437EE00648A80 /* BasicContactTableViewCell.swift */; };
+		9D0F1C40281437EE00648A80 /* BasicContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0F1C3E281437EE00648A80 /* BasicContactTableViewCell.xib */; };
+		9D0F1C4328143CE900648A80 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F1C4228143CE900648A80 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9D0613BD28142A3600C16554 /* EasyContactsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyContactsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D0613C028142A3600C16554 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D0613C228142A3600C16554 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9D0613C428142A3600C16554 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9D0613C728142A3600C16554 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D0613C928142A3B00C16554 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D0613CC28142A3B00C16554 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D0613CE28142A3B00C16554 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D0613D528142AB500C16554 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
+		9D0613D928142B0700C16554 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		9D0F1C3D281437EE00648A80 /* BasicContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicContactTableViewCell.swift; sourceTree = "<group>"; };
+		9D0F1C3E281437EE00648A80 /* BasicContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicContactTableViewCell.xib; sourceTree = "<group>"; };
+		9D0F1C4228143CE900648A80 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D0F1C3B281434C700648A80 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +64,42 @@
 		9D0613BF28142A3600C16554 /* EasyContactsApp */ = {
 			isa = PBXGroup;
 			children = (
+				9D0F1C4128143C7B00648A80 /* Utilities */,
+				9D0F1C3C281437D300648A80 /* ContactCell */,
+				9D0613D428142A8900C16554 /* Home */,
+			);
+			path = EasyContactsApp;
+			sourceTree = "<group>";
+		};
+		9D0613D428142A8900C16554 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9D0613D528142AB500C16554 /* ContactListViewController.swift */,
+				9D0613D928142B0700C16554 /* Home.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9D0F1C3C281437D300648A80 /* ContactCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D0F1C3D281437EE00648A80 /* BasicContactTableViewCell.swift */,
+				9D0F1C3E281437EE00648A80 /* BasicContactTableViewCell.xib */,
+			);
+			path = ContactCell;
+			sourceTree = "<group>";
+		};
+		9D0F1C4128143C7B00648A80 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
 				9D0613C028142A3600C16554 /* AppDelegate.swift */,
 				9D0613C228142A3600C16554 /* SceneDelegate.swift */,
-				9D0613C428142A3600C16554 /* ViewController.swift */,
-				9D0613C628142A3600C16554 /* Main.storyboard */,
+				9D0F1C4228143CE900648A80 /* Constants.swift */,
 				9D0613C928142A3B00C16554 /* Assets.xcassets */,
 				9D0613CB28142A3B00C16554 /* LaunchScreen.storyboard */,
 				9D0613CE28142A3B00C16554 /* Info.plist */,
 			);
-			path = EasyContactsApp;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +118,9 @@
 			dependencies = (
 			);
 			name = EasyContactsApp;
+			packageProductDependencies = (
+				9D0F1C3A281434C700648A80 /* Algorithms */,
+			);
 			productName = EasyContactsApp;
 			productReference = 9D0613BD28142A3600C16554 /* EasyContactsApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +149,9 @@
 				Base,
 			);
 			mainGroup = 9D0613B428142A3600C16554;
+			packageReferences = (
+				9D0F1C39281434C700648A80 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
 			productRefGroup = 9D0613BE28142A3600C16554 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +166,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D0F1C40281437EE00648A80 /* BasicContactTableViewCell.xib in Resources */,
 				9D0613CD28142A3B00C16554 /* LaunchScreen.storyboard in Resources */,
 				9D0613CA28142A3B00C16554 /* Assets.xcassets in Resources */,
-				9D0613C828142A3600C16554 /* Main.storyboard in Resources */,
+				9D0613DA28142B0700C16554 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +180,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D0613C528142A3600C16554 /* ViewController.swift in Sources */,
+				9D0F1C4328143CE900648A80 /* Constants.swift in Sources */,
+				9D0613D728142AB500C16554 /* ContactListViewController.swift in Sources */,
+				9D0F1C3F281437EE00648A80 /* BasicContactTableViewCell.swift in Sources */,
 				9D0613C128142A3600C16554 /* AppDelegate.swift in Sources */,
 				9D0613C328142A3600C16554 /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +191,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9D0613C628142A3600C16554 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9D0613C728142A3600C16554 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9D0613CB28142A3B00C16554 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,10 +325,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RKA7R98LN8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = EasyContactsApp/Info.plist;
+				INFOPLIST_FILE = EasyContactsApp/Utilities/Info.plist;
+				INFOPLIST_KEY_NSContactsUsageDescription = "We need your contact info to show";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = Utilities/LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -317,10 +354,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RKA7R98LN8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = EasyContactsApp/Info.plist;
+				INFOPLIST_FILE = EasyContactsApp/Utilities/Info.plist;
+				INFOPLIST_KEY_NSContactsUsageDescription = "We need your contact info to show";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = Utilities/LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -358,6 +396,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9D0F1C39281434C700648A80 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9D0F1C3A281434C700648A80 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D0F1C39281434C700648A80 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9D0613B528142A3600C16554 /* Project object */;
 }
